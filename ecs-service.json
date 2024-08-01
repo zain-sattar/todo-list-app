@@ -1,0 +1,26 @@
+{
+    "cluster": "zain-todo-cluster",
+    "serviceName": "zain-todo-service",
+    "taskDefinition": "zain-todo-task",
+    "desiredCount": 1,
+    "launchType": "FARGATE",
+    "networkConfiguration": {
+      "awsvpcConfiguration": {
+        "subnets": [
+          "subnet-0287c7bd8967d773b",  
+          "subnet-06ad48f2490d795a8",
+          "subnet-0490c73b1c914d160"
+        ],
+        "securityGroups": [
+          "sg-02885dd9199d277c4"
+        ],
+        "assignPublicIp": "ENABLED"
+      }
+    },
+    "deploymentConfiguration": {
+      "maximumPercent": 200,
+      "minimumHealthyPercent": 100
+    },
+    "schedulingStrategy": "REPLICA"
+  }
+  

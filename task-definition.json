@@ -1,0 +1,26 @@
+{
+    "family": "zain-todo-task",
+    "networkMode": "awsvpc",
+    "containerDefinitions": [
+      {
+        "name": "zain-todo-app",
+        "image": "294603340522.dkr.ecr.ap-south-1.amazonaws.com/zain-todo-app:latest",
+        "essential": true,
+        "memory": 512,
+        "cpu": 256,
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "hostPort": 80,
+            "protocol": "tcp"
+          }
+        ]
+      }
+    ],
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "256",
+    "memory": "512",
+    "executionRoleArn": "arn:aws:iam::294603340522:role/ecsTaskExecutionRole",
+    "taskRoleArn": "arn:aws:iam::294603340522:role/ecsTaskExecutionRole"
+  }
+  

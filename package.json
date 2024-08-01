@@ -17,7 +17,6 @@
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "axios": "^1.4.0",
-    "json-server": "^1.0.0-beta.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.2",
@@ -32,9 +31,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-json-server": "json-server --watch ./src/db/db.json --port 8000",
-    "docker:build":"docker build -t todo-list-app .",
-    "docker:run":"docker run -p 80:80 -p 8000:8000 todo-list-app"
+    "docker:build":"docker build -t zain-todo-app .",
+    "docker:run":"docker run -p 80:80 -p 8000:8000 zain-todo-app",
+    "docker:tag-image":"docker tag zain-todo-app:latest 294603340522.dkr.ecr.ap-south-1.amazonaws.com/zain-todo-app:latest",
+    "ecr:login":"aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 294603340522.dkr.ecr.ap-south-1.amazonaws.com",
+    "register-task-defination":"aws ecs register-task-definition --cli-input-json file://task-definition.json --region ap-south-1",
+    "create-service":"aws ecs create-service --cli-input-json file://ecs-service.json --region ap-south-1",
+    "update-service":"aws ecs update-service --cli-input-json file://ecs-service.json --region ap-south-1"
   },
   "eslintConfig": {
     "extends": [
