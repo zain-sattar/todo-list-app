@@ -17,13 +17,14 @@ const addTodo = async (todo: TaskType) => {
   return response.data;
 };
 
-const deleteTodo = async (id: number) => {
+const deleteTodo = async (id: string) => {
   const response = await todoApi.delete(`/${id}`);
   return response.data;
 };
 
 const editTodo = async (todo: TaskType) => {
-  const response = await todoApi.patch(`/${todo.id}`, todo);
+  const { _id, ...rest } = todo;
+  const response = await todoApi.put(`/${_id}`, rest);
   return response.data;
 };
 

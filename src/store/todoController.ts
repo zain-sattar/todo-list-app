@@ -3,7 +3,7 @@ import { hookstate, useHookstate } from "@hookstate/core";
 export type TaskType = {
   task: String;
   isCompleted: boolean;
-  id?: number;
+  _id?: string;
 };
 
 const initialState = {

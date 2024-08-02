@@ -4,10 +4,10 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 
 import style from "./styles";
 import { getTodos, deleteTodo, editTodo } from "../../api/todoApi";
-import {TaskType , todoStateController, useTodoState } from "../../store/todoController";
+import { TaskType, todoStateController, useTodoState } from "../../store/todoController";
 
 function TodoList() {
-  const todoState=useTodoState();
+  const todoState = useTodoState();
   const queryClient = useQueryClient();
 
   const { status } = useQuery("todos", getTodos, {
@@ -37,7 +37,7 @@ function TodoList() {
     todoStateController.setSelectedTodo(todo);
   };
 
-  const deleteHandler = async (id: number = 0) => {
+  const deleteHandler = async (id: string = "") => {
     deleteTodoMutation.mutate(id);
   };
 
@@ -58,7 +58,7 @@ function TodoList() {
   return (
     <CardContent sx={style.body}>
       {todos?.map((todo: TaskType) => (
-        <Box key={todo.id} sx={style.todoTaskBoxStyle}>
+        <Box key={todo._id} sx={style.todoTaskBoxStyle}>
           <Typography
             variant="h6"
             sx={{
@@ -87,7 +87,7 @@ function TodoList() {
           <IconButton
             aria-label="delete"
             onClick={() => {
-              deleteHandler(todo.id);
+              deleteHandler(todo._id);
             }}
           >
             <Delete sx={{ color: "white" }} />
